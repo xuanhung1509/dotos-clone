@@ -1,0 +1,14 @@
+@use '../../../../scss/mixins';
+
+.donate {
+  margin: 2rem 0;
+
+  .container {
+    @include mixins.flex;
+    justify-content: center;
+  }
+
+  img {
+    width: 40%;
+  }
+}

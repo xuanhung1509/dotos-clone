@@ -1,0 +1,41 @@
+@use '../../../../scss/vars';
+
+.team {
+  h2 {
+    margin: 1.5rem 0 1rem;
+  }
+
+  .card {
+    justify-content: flex-start;
+    column-gap: 1.5rem;
+
+    height: 150px;
+    padding: 1rem;
+    border-radius: 15px;
+    background: rgb(249, 249, 249);
+
+    .member-img {
+      height: 100%;
+
+      & > img {
+        height: 100%;
+        border-radius: 15px;
+      }
+    }
+
+    .member-name {
+      font-weight: 700;
+      color: vars.$primary-color;
+    }
+
+    .member-role {
+      font-size: 1rem;
+    }
+  }
+
+  .team-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 2rem;
+  }
+}

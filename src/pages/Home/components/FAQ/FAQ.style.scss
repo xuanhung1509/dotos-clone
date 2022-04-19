@@ -1,0 +1,11 @@
+.faq {
+  margin: 4rem 0;
+
+  h2 + p {
+    margin-bottom: 2rem;
+  }
+
+  .faq-list-item {
+    padding-bottom: 1rem;
+  }
+}

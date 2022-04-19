@@ -1,0 +1,55 @@
+@use '../../scss/vars';
+@use '../../scss/mixins';
+@use '../../scss/animations';
+
+footer {
+  padding: 3rem 0 2rem;
+  background: #e5e7eb;
+
+  h3 {
+    font-weight: 500;
+    color: #4b5563;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1.5rem 0 2.5rem;
+
+    .footer-link-wrapper {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+
+      .footer-link-item > a {
+        @include mixins.flex;
+        justify-content: flex-start;
+        column-gap: 0.5rem;
+        color: #4b5563;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: vars.$primary-color;
+        }
+      }
+    }
+  }
+
+  .icon-heart {
+    color: red;
+    animation: pulse 1s ease infinite;
+  }
+
+  h4 {
+    color: #4b5563;
+    font-weight: 500;
+
+    & > a {
+      color: vars.$primary-color;
+    }
+  }
+
+  p:last-child {
+    margin: 1rem 0;
+  }
+}

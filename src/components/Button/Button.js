@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Button.style.scss';
 
 function Button({ children, type }) {
   return <button className={`btn btn-${type}`}>{children}</button>;

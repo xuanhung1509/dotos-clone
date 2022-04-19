@@ -1,11 +1,12 @@
-import about from './assets/about.webp';
+import about from '../../../../components/assets/images/about.webp';
+import './About.style.scss';
 
 function About() {
   return (
     <section id='about' className='about'>
       <div className='container'>
         <div className='about-text'>
-          <h2 className='heading-lg'>About dotOS</h2>
+          <h2 className='heading-xl'>About dotOS</h2>
           <p>
             DroidOnTime is a custom Android firmware. It was launched with an
             aim to provide Unique user interface and Optimum performance that

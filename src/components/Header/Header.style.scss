@@ -1,0 +1,42 @@
+@use '../../scss/vars';
+@use '../../scss/mixins';
+
+header {
+  position: sticky;
+  top: 0;
+  background: vars.$white-color;
+  z-index: 10;
+}
+
+.navbar {
+  height: 80px;
+  padding: 1.25rem 2rem;
+
+  .container {
+    @include mixins.flex;
+  }
+
+  .logo > * {
+    color: vars.$primary-color;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    @include mixins.flex;
+    column-gap: 5px;
+
+    .nav-link-item > * {
+      padding: 5px 16px;
+      color: vars.$primary-color;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+
+      &.active,
+      &:hover {
+        background: vars.$primary-color;
+        color: vars.$white-color;
+      }
+    }
+  }
+}

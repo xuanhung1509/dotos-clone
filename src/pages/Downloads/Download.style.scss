@@ -1,0 +1,37 @@
+@use '../../scss/vars';
+@use '../../scss/mixins';
+
+.download .input-group {
+  @include mixins.flex;
+  justify-content: center;
+  width: 40%;
+  margin: 2rem 0 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  .search-icon {
+    padding: 0.625rem 0 0.625rem 1rem;
+    color: vars.$primary-color;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.625rem;
+    border: none;
+    outline: none;
+    color: vars.$primary-color;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+  }
+
+  .card {
+    width: 400px;
+  }
+}

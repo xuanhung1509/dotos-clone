@@ -1,0 +1,30 @@
+@use '../../../../scss/mixins';
+
+.about {
+  .container {
+    @include mixins.flex;
+    justify-content: center;
+    column-gap: 2rem;
+  }
+
+  .about-text {
+    flex: 3;
+
+    & > h2 {
+      margin-bottom: 1rem;
+    }
+
+    & > p {
+      padding-right: 5rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  .about-img {
+    flex: 1;
+
+    & > img {
+      max-width: 100%;
+    }
+  }
+}

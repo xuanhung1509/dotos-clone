@@ -1,0 +1,74 @@
+@use '../../../../scss/vars';
+@use '../../../../scss/typo';
+@use '../../../../scss/mixins';
+
+.showcase {
+  height: calc(90vh - 80px);
+  padding: 1rem 2rem;
+
+  .container {
+    @include mixins.flex;
+    justify-content: center;
+    column-gap: 1rem;
+
+    position: relative;
+    max-width: 1300px;
+    height: 100%;
+    padding: 0 1rem;
+    overflow: hidden;
+  }
+
+  .isometric {
+    position: absolute;
+    top: -500px;
+    left: -120px;
+    color: #fff;
+    text-shadow: 0 306px 232px rgb(0 0 0 / 4%),
+      0 153.149px 116.113px rgb(0 0 0 / 3%), 0 92.25px 69.9412px rgb(0 0 0 / 3%),
+      0 59.1187px 44.822px rgb(0 0 0 / 2%), 0 38.3159px 29.05px rgb(0 0 0 / 2%),
+      0 24.1195px 18.2866px rgb(0 0 0 / 2%),
+      0 13.8581px 10.5068px rgb(0 0 0 / 1%),
+      0 6.09932px 4.62432px rgb(0 0 0 / 1%);
+    font-size: 60rem;
+    font-weight: 700;
+    transform: rotate(-30deg);
+    z-index: -1;
+  }
+
+  .showcase-text,
+  .showcase-img {
+    flex: 1;
+  }
+
+  .showcase-text {
+    & > h3 {
+      font-weight: 500;
+      margin-top: -1.25rem;
+    }
+
+    & > .desc {
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.6rem;
+    }
+
+    .btn > a {
+      color: vars.$white-color;
+    }
+  }
+
+  .showcase-img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    & > img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      max-width: 100%;
+    }
+  }
+}
