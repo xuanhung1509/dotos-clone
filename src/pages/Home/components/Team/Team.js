@@ -43,7 +43,7 @@ function Team() {
         </h2>
         <div className='team-wrapper'>
           {members.map((member) => (
-            <Card>
+            <Card key={member.name}>
               <div className='member-img'>
                 <img src={member.avatar} alt={member.name} />
               </div>

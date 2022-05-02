@@ -33,9 +33,14 @@ header {
       transition: all 0.3s ease;
 
       &.active,
-      &:hover {
+      &.active:hover {
         background: vars.$primary-color;
         color: vars.$white-color;
+      }
+
+      &:hover {
+        background: vars.$primary-light-color;
+        color: vars.$primary-color;
       }
     }
   }

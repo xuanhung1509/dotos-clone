@@ -4,6 +4,20 @@ import Button from '../../../../components/Button/Button';
 import './Showcase.style.scss';
 
 function Showcase() {
+  const setDownloadToActive = () => {
+    let navLinks = document.querySelectorAll('.nav-link-item > *');
+
+    navLinks.forEach((item) => {
+      if (item.classList.contains('active')) {
+        item.classList.remove('active');
+      }
+    });
+
+    document
+      .querySelector('.nav-link-item:last-child > *')
+      .classList.add('active');
+  };
+
   return (
     <section id='showcase' className='showcase'>
       <div className='container'>
@@ -17,7 +31,9 @@ function Showcase() {
             <b>"Secure"</b>.
           </p>
           <Button>
-            <Link to='/download'>Find your device</Link>
+            <Link to='/download' onClick={setDownloadToActive}>
+              Find your device
+            </Link>
           </Button>
         </div>
         <div className='showcase-img'>

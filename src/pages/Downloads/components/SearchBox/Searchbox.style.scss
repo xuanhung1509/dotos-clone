@@ -1,0 +1,82 @@
+@use '../../../../scss/vars';
+@use '../../../../scss/mixins';
+
+$width: 50%;
+
+.input-group {
+  @include mixins.flex;
+  justify-content: center;
+  width: $width;
+  margin: 2rem 0 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  outline: 1px solid vars.$white-color;
+  transition: outline 0.3s ease;
+
+  .search-icon {
+    @include mixins.flex;
+    justify-content: center;
+    padding: 0.625rem 0.5rem 0.625rem 1rem;
+    color: vars.$primary-color;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    outline: none;
+    color: vars.$primary-color;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  input::placeholder {
+    transition: all 0.3s ease;
+  }
+
+  &.focus {
+    outline: 1px solid vars.$primary-color;
+
+    & > input::placeholder {
+      transform: translateX(10px);
+    }
+  }
+}
+
+.suggestion-wrapper {
+  display: none;
+  position: relative;
+  width: $width;
+
+  .suggestion-list {
+    background: vars.$dark-color;
+    width: 100%;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+
+    .suggestion-list-item {
+      a {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: vars.$white-color;
+        transition: background 0.2s ease;
+        z-index: 10;
+
+        &:hover {
+          background: vars.$primary-color;
+        }
+      }
+    }
+  }
+}
+
+.input-group.focus + .suggestion-wrapper,
+.suggestion-wrapper:active {
+  display: block;
+}

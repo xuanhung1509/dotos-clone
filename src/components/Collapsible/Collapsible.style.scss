@@ -3,7 +3,6 @@
 
 .collapsible {
   cursor: pointer;
-  padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 10px;
   font-family: inherit;
@@ -11,8 +10,6 @@
   @include mixins.flex;
   width: 100%;
   margin-bottom: 1px;
-  padding: 2rem 3rem;
-  border-bottom: 1px solid #ddd;
   background: vars.$white-color;
   transition: all 0.2s ease;
 
@@ -21,34 +18,8 @@
     border-bottom-right-radius: 0;
   }
 
-  &:hover,
-  &.active {
-    background: #ddd;
-  }
-
   & > * {
     pointer-events: none;
-  }
-
-  span:nth-child(2) {
-    flex: 2;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 2rem;
-  }
-
-  .icon {
-    color: #b8b8b8;
-  }
-
-  .icon-minus,
-  &.active .icon-plus {
-    display: none;
-  }
-
-  .icon-plus,
-  &.active .icon-minus {
-    display: inline;
   }
 }
 
@@ -58,9 +29,5 @@
   background: #ddd;
   transition: max-height 0.2s ease;
   border-bottom-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-
-  & > div {
-    padding: 1rem 2rem 2rem;
-  }
+  border-bottom-right-radius: 10px;
 }

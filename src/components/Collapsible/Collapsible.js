@@ -39,7 +39,7 @@ function Collapsible({ list }) {
   return (
     <ul className='faq-list'>
       {list.map((item) => (
-        <li className='faq-list-item'>
+        <li key={item.id} className='faq-list-item'>
           <button
             className='collapsible heading-md'
             onClick={toggleCollapsible}

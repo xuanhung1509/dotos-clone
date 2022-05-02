@@ -59,11 +59,7 @@ function Header() {
                 Features
               </Link>
             </li>
-            <li className='nav-link-item'>
-              <Link to='download' onClick={setActive}>
-                Download
-              </Link>
-            </li>
+
             <li className='nav-link-item'>
               <Link to='/#about' onClick={setActive}>
                 About
@@ -79,6 +75,11 @@ function Header() {
               <a href='https://t.me/dotOSchannel' onClick={setActive}>
                 Contact
               </a>
+            </li>
+            <li className='nav-link-item'>
+              <Link to='download' onClick={setActive}>
+                Download
+              </Link>
             </li>
           </ul>
         </div>

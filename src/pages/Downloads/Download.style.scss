@@ -1,37 +1,68 @@
 @use '../../scss/vars';
 @use '../../scss/mixins';
 
-.download .input-group {
-  @include mixins.flex;
-  justify-content: center;
-  width: 40%;
-  margin: 2rem 0 1rem;
-  border-radius: 1rem;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-
-  .search-icon {
-    padding: 0.625rem 0 0.625rem 1rem;
-    color: vars.$primary-color;
-  }
-
-  input {
-    width: 100%;
-    padding: 0.625rem;
-    border: none;
-    outline: none;
-    color: vars.$primary-color;
-    font-size: 1rem;
-    font-family: inherit;
-  }
-
+.download {
   .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 5rem;
+    display: flex;
+    // grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+    margin-bottom: 5rem;
   }
 
-  .card {
-    width: 400px;
+  .manufacturer {
+    flex: 1;
+    .card {
+      flex-direction: column;
+      width: 400px;
+      border-radius: 10px;
+
+      .manufacturer-list {
+        width: 100%;
+        margin-top: 1rem;
+
+        .collapsible {
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 1rem 1.2rem;
+          border-radius: 5px;
+
+          &:hover,
+          &.active {
+            background: vars.$primary-color;
+            color: vars.$white-color;
+          }
+        }
+
+        .device-list {
+          margin-bottom: 5px;
+
+          .device-list-item {
+            background: vars.$primary-light-color;
+
+            a {
+              display: block;
+              padding: 0.8rem;
+              color: vars.$dark-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .info {
+    margin-left: 4rem;
+    h3 {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    h4 {
+      margin: 0.5rem 0 1.25rem;
+    }
+  }
+
+  .rom {
+    flex: 2;
   }
 }

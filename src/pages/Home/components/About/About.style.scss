@@ -1,6 +1,8 @@
 @use '../../../../scss/mixins';
 
 .about {
+  scroll-margin-top: 80px;
+
   .container {
     @include mixins.flex;
     justify-content: center;

@@ -1,78 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import SearchBox from './components/SearchBox';
+import SearchBox from './components/SearchBox/SearchBox';
+import Rom from './components/Rom/Rom';
 import Card from '../../components/Card/Card';
 import './Download.style.scss';
+import { Routes, Route, Link } from 'react-router-dom';
 
 function Download() {
-  const [tab, setTab] = useState('info');
-  const downloads = [
-    {
-      manufacturer: 'GSI (Universal Builds)',
-      devices: [
-        {
-          name: 'A64',
-          codename: 'a64',
-          link: 'http://google.com',
-        },
-        {
-          name: 'ARM',
-          codename: 'arm',
-          link: 'http://google.com',
-        },
-        {
-          name: 'ARM64',
-          codename: 'arm64',
-          link: 'http://google.com',
-        },
-      ],
-    },
-    {
-      manufacturer: 'Asus',
-      devices: [
-        {
-          name: 'Zenfone 5',
-          codename: 'X00QD',
-          link: 'http://google.com',
-        },
-        {
-          name: 'Zenfone Max Pro M1',
-          codename: 'X00TD',
-          link: 'http://google.com',
-        },
-        {
-          name: 'Zenfone Max M2',
-          codename: 'X01AD',
-          link: 'http://google.com',
-        },
-      ],
-    },
-    {
-      manufacturer: 'Google',
-      devices: [
-        {
-          name: 'Pixel 3a XL',
-          codename: 'bonito',
-          link: 'http://google.com',
-        },
-        {
-          name: 'Pixel 3a',
-          codename: 'sargo',
-          link: 'http://google.com',
-        },
-        {
-          name: 'Pixel 2 XL',
-          codename: 'taimen',
-          link: 'http://google.com',
-        },
-        {
-          name: 'Pixel 2',
-          codename: 'walleye',
-          link: 'http://google.com',
-        },
-      ],
-    },
-  ];
+  const [downloads, setDownloads] = useState([]);
+  const [curCodename, setCurCodename] = useState('a64');
+  const getCurDevice = () => {
+    for (let i = 0; i < downloads.length; i++) {
+      let device = downloads[i].devices.find(
+        (item) => item.codename === curCodename
+      );
+      if (device) {
+        return device;
+      }
+    }
+  };
+
+  const fetchData = async () => {
+    const response = await fetch('db.json');
+    const data = await response.json();
+
+    setDownloads(data.reverse());
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   // Toggle content
   const toggleContent = (content) => {
@@ -85,11 +42,12 @@ function Download() {
 
   // Collapse all open content
   const collapseAllOpenContent = () => {
-    const collapsible = document.querySelectorAll('.collapsible');
+    const collapsible = document
+      .querySelector('.manufacturer')
+      .querySelectorAll('.collapsible');
 
     collapsible.forEach((item) => {
       if (item.classList.contains('active')) {
-        console.log(1);
         item.classList.remove('active');
         toggleContent(item.nextElementSibling);
       }
@@ -116,56 +74,39 @@ function Download() {
         <SearchBox suggestions={downloads} />
         <div className='grid'>
           <div className='manufacturer'>
-            <Card flexDirection='column'>
+            <Card>
               <h3 className='heading-md'>Manufacturer</h3>
               <ul className='manufacturer-list'>
                 {downloads.map((item) => (
                   <li key={item.manufacturer}>
-                    <button
-                      className='btn collapsible'
-                      onClick={toggleCollapsible}
-                    >
+                    <button className='collapsible' onClick={toggleCollapsible}>
                       {item.manufacturer}
                       <FaChevronDown />
                     </button>
-                    <div className='content'>
+                    <ul className='content device-list'>
                       {item.devices.map((device) => (
-                        <ul>
-                          <li>
-                            <a href='#' onClick={() => setTab('download')}>
-                              {device.name}
-                            </a>
-                          </li>
-                        </ul>
+                        <li key={device.codename} className='device-list-item'>
+                          <Link
+                            to={`/download/${device.codename}`}
+                            onClick={() => {
+                              setCurCodename(device.codename);
+                            }}
+                          >
+                            {device.deviceName} ({device.codename})
+                          </Link>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </li>
                 ))}
               </ul>
             </Card>
           </div>
-          {tab === 'info' && (
-            <div className='info'>
-              <h3 className='heading-md font-md'>
-                These are the official devices supported by{' '}
-                <span className='text-primary'>DotOS</span> Team
-              </h3>
-              <h4 className='heading-sm font-md'>
-                Note: All official builds are signed with strong cryptographic
-                signatures.
-              </h4>
-              <p>
-                Is your device missing from our list? Do you want your device to
-                be supported by our team? Then the Interested Developer should
-                apply for Maintainership or you can donate us to buy and support
-                the device.
-                <br />
-                Are you developer? Click here to apply for device
-                maintainership.
-              </p>
-            </div>
-          )}
-          {tab === 'download' && <h1>Downloads</h1>}
+
+          <Routes>
+            <Route path='/' element={<DownloadInfo />} />
+            <Route path='/:codename' element={<Rom roms={downloads} />} />
+          </Routes>
         </div>
       </div>
     </section>
@@ -173,3 +114,25 @@ function Download() {
 }
 
 export default Download;
+
+function DownloadInfo() {
+  return (
+    <div className='info'>
+      <h3>
+        These are the official devices supported by{' '}
+        <span className='text-primary'>DotOS</span> Team
+      </h3>
+      <h4 className='heading-sm'>
+        Note: All official builds are signed with strong{' '}
+        <span className='text-primary'>cryptographic signatures.</span>
+      </h4>
+      <p>
+        Is your device missing from our list? Do you want your device to be
+        supported by our team? Then the Interested Developer should apply for
+        Maintainership or you can donate us to buy and support the device.
+        <br />
+        Are you developer? Click here to apply for device maintainership.
+      </p>
+    </div>
+  );
+}

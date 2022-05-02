@@ -11,18 +11,18 @@ function Features() {
     },
     {
       icon: <FaFillDrip size='50px' />,
-      name: 'Quick Settings Redesign',
-      desc: 'We want to keep the tradition going and we have released yet another redesign of the most used menu on a phone.',
+      name: 'New Way to Personalize',
+      desc: 'You can now customize your device with your own icons, wallpaper, colors, and more with Customizations.',
     },
     {
       icon: <FaWrench size='50px' />,
-      name: 'Quick Settings Redesign',
-      desc: 'We want to keep the tradition going and we have released yet another redesign of the most used menu on a phone.',
+      name: 'Settings Design Update',
+      desc: 'Google did a great job with Settings app, but some stuff just needs some polish, and that’s what we’ve done.',
     },
     {
       icon: <FaAndroid size='50px' />,
-      name: 'Quick Settings Redesign',
-      desc: 'We want to keep the tradition going and we have released yet another redesign of the most used menu on a phone.',
+      name: 'Always Up-to-date',
+      desc: 'Security was always our concern, that’s why security patches are merged as soon as possible.',
     },
   ];
 
@@ -33,7 +33,7 @@ function Features() {
         <p>Make your device look and feel great again</p>
         <div className='feature-list'>
           {features.map((feature) => (
-            <Card>
+            <Card key={feature.name}>
               {feature.icon}
               <div className='card-body'>
                 <div className='card-title'>{feature.name}</div>

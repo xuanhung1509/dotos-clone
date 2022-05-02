@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/download' element={<Download />} />
+          <Route path='/download/*' element={<Download />} />
         </Routes>
         <Footer />
       </Router>
@@ -26,3 +26,9 @@ function App() {
 }
 
 export default App;
+
+// @todo:
+// - Fetching local data produces error: Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0
+// - Fix invalid date in some roms
+// - Refactor code to DRY
+// - No build found UI

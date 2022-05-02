@@ -20,3 +20,9 @@
   background: vars.$primary-color;
   color: vars.$white-color;
 }
+
+.btn-primary-light {
+  @extend %btn;
+  background: vars.$primary-light-color;
+  color: vars.$black-color;
+}
